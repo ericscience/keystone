@@ -2,16 +2,14 @@ extends ../layouts/default
 
 block content
 	.splash
-		.intro I’m a data scientist with 10 years of experience in machine learning.
+		.intro I’m a data scientist and engineer with 10 years of experience.
 		.fox
 			img(src='/images/fox.png')
 	.cases
 		a(name='cases')
 		.section-title Case Studies
 			hr
-
-		
-		each caseStudy in data.caseStudies.results
+		each caseStudy in data.caseStudies
 			.row.container
 				.col-md-4
 					.img(style="background-image: url(#{caseStudy.image.url})")
@@ -26,16 +24,84 @@ block content
 						.info Length of project: 
 							span #{caseStudy.length}
 						.content !{caseStudy.description}
+	.resume
+		a(name='resume')
+		.section-title Resume
+			hr
+		.row.container
+			.col-md-6
+				.header Education
+				each education, index in data.educations
+					.education-item
+						.institution #{education.institution}
+						.title #{education.degree}
+						.dates #{education.dates}
+						each field in ['focus', 'thesis', 'advisor', 'gpa']
+							if education[field]
+								.info #{field}: 
+									span #{education[field]}
+				.btn.toggle-education See More
+
+				.header Work Experience
+				each experience, index in data.workExperiences
+					.experience-item
+						.institution #{experience.company}
+						.title #{experience.title}
+						.dates #{experience._.dateStart.format('MMMM YYYY')} -
+							| #{experience.dateEnd ? experience._.dateEnd.format('MMMM YYYY') : 'Present'}
+						.info
+							span #{experience.description}
+				.btn.toggle-experience See More
+			.col-md-6
+				.header Publications
+				each publication, index in data.publications
+					a(href="/files/#{publication.file.filename}", target="_blank")
+						.publication-item
+							.institution #{publication.venue}
+							.title #{publication.title}
+							.dates #{publication._.date.format('MMMM YYYY')}
+							.info
+								span #{publication.description}
+				.btn.toggle-publication See More
 
 block js
 	script(src="/js/readmore-js/readmore.min.js")
 	script.
+		jQuery.fn.extend({
+			toggleItems: function (elementClass, numberInitialBlocks, moreString, lessString) {
+				var self = this;
+				function toggle(text, style) {
+					$(self).text(text);
+					$(elementClass).each(function (index) {
+						if (index >= numberInitialBlocks) {
+							$(this).attr('style',style);
+						}
+					});
+				};
+
+				toggle(moreString, 'display: none');
+
+				self.click( function () {
+					if ($(self).text() === moreString) {
+						toggle(lessString, '');
+					}	else {
+						toggle(moreString, 'display: none');
+					}
+				});
+			}
+		});
+
 		$(document).ready(function() {
-			console.log('hello');
 			$('.case-details').readmore({
-				collapsedHeight: 300,
-				moreLink: '<div><div class="btn">Learn More</div></div>',
-				lessLink: '<div><div class="btn">Learn Less</div></div>',
+				collapsedHeight: 305,
+				moreLink: '<div><div class="btn">See More</div></div>',
+				lessLink: '<div><div class="btn">See Less</div></div>',
 				embedCSS: false
-			})
+			});
+
+			$('.toggle-education').toggleItems('.education-item', 2, 'See More', 'See Less');
+			$('.toggle-experience').toggleItems('.experience-item', 2, 'See More', 'See Less');
+			$('.toggle-publication').toggleItems('.publication-item', 1, 'See More', 'See Less');
+
+
 		});

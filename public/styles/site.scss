@@ -29,33 +29,32 @@
   padding-top: 10px;
 }
 
-.navbar-default {
+.navbar {
   background-color: transparent;
   border-color: transparent;
-}
 
-.navbar-brand {
-  div.name {
-    font-family: 'Crete Round', serif;
-    color: #156d5b;
-    font-size: 36px;
+  .navbar-brand {
+    div.name {
+      font-family: 'Crete Round', serif;
+      color: #156d5b;
+      font-size: 36px;
+    }
+    div.title {
+      font-family: 'Lato', sans-serif;
+      color: #0b5445;
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 0.8px;
+      padding-top: 7px;
+    }
   }
-  div.title {
+  .navbar-nav li a {
     font-family: 'Lato', sans-serif;
-    color: #0b5445;
+    color: #ffffff !important;
     text-transform: uppercase;
-    font-size: 13px;
-    letter-spacing: 0.8px;
-    padding-top: 7px;
+    font-size: 16px;
+    padding-top: 22px;
   }
-}
-
-.navbar-nav li a {
-  font-family: 'Lato', sans-serif;
-  color: #ffffff !important;
-  text-transform: uppercase;
-  font-size: 16px;
-  padding-top: 22px;
 }
 
 .splash {
@@ -83,16 +82,18 @@
   margin: auto;
   text-align: center;
   padding-top: 100px;
+  font-color: #000;
   hr {
     margin-top: 0;
     background: #3cc7ab;
     width: 100px;
     height: 5px;
   }
-
 }
+
 .cases {
   font-family: 'Lato', sans-serif;
+  padding-bottom: 100px;
   .row {
     padding-top: 80px;
     margin: auto;
@@ -100,7 +101,9 @@
   .title {
     font-size: 40px;
     color: #3cc7ab;
-    line-height: 120%;
+    line-height: 110%;
+    margin-top: -7px;
+    margin-bottom: 5px;
   }
   .info {
     font-weight: 900;
@@ -127,11 +130,71 @@
     margin-top: 10px;
     font-weight: 300;
     font-size: 22px;
+    line-height: 154%;
   }
   .btn {
     background-color: #3cc7ab;
     font-family: 'Crete Round', serif;
     color: white;
+    font-size: 20px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 0px;
+  }
+}
+
+.resume {
+  font-family: 'Lato', sans-serif;
+  background-color: #3cc7ab;
+  .section-title hr {
+    background: #fff;
+  }
+  .row {
+    margin: auto;
+    padding-bottom: 80px;
+  }
+  .header {
+    padding-top: 80px;
+    font-size: 40px;
+    color: #fff;
+  }
+  .institution {
+    padding-top: 40px;
+    font-weight: 300;
+    font-size: 20px;
+  }
+  .title {
+    font-weight: 700;
+    font-size: 28px;
+  }
+  a {
+    color: #333333;
+    &:hover {
+      color: #333333;
+      text-decoration: none;
+    }
+  }
+  .dates {
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+  .info {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding-top: 5px;
+    span {
+      font-weight: 300;
+      text-transform: none;
+      font-size: 18px;
+    }
+  }
+  .btn {
+    background-color: #3cc7ab;
+    font-family: 'Crete Round', serif;
+    color: white;
+    border-color: white;
+    border-width: 3px;
     font-size: 20px;
     padding: 10px 20px;
     margin-top: 20px;

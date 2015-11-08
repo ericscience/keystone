@@ -3,7 +3,8 @@ var Types = keystone.Field.Types;
 
 var CaseStudy = new keystone.List('CaseStudy', {
 	map: { name: 'title' },
-	autokey: { path: 'slug', from: 'title', unique: true }
+	autokey: { path: 'slug', from: 'title', unique: true },
+	defaultSort: '-publishedDate'
 });
 
 CaseStudy.add({

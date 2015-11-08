@@ -9,25 +9,63 @@ exports = module.exports = function(req, res) {
 	// item in the header navigation.
 	locals.section = 'home';
 	locals.data = {
-		caseStudies: []
+		caseStudies: [],
+		educations: [],
+		workExperiences: []
 	};
 
-	// Load the posts
+	// Load the Case Studies
 	view.on('init', function(next) {
 
-		var q = keystone.list('CaseStudy').paginate({
-				page: req.query.page || 1,
-				perPage: 10,
-				maxPages: 10
-			})
-			.where('state', 'published')
-			.sort('-publishedDate')
-			.populate('tools');
+		var CaseStudy = keystone.list('CaseStudy');
 
-		q.exec(function(err, results) {
-			locals.data.caseStudies = results;
-			next(err);
-		});
+		CaseStudy.model.find()
+			.limit(3)
+			.where('state', 'published')
+			.populate('tools')
+			.exec(function(err, results) {
+				locals.data.caseStudies = results;
+				next(err);
+			});
+
+	});
+
+	// Load the Educations
+	view.on('init', function(next) {
+
+		var Education = keystone.list('Education');
+
+		Education.model.find()
+			.exec(function(err, results) {
+				locals.data.educations = results;
+				next(err);
+			});
+
+	});
+
+	// Load the WorkExperiences
+	view.on('init', function(next) {
+
+		var WorkExperience = keystone.list('WorkExperience');
+
+		WorkExperience.model.find()
+			.exec(function(err, results) {
+				locals.data.workExperiences = results;
+				next(err);
+			});
+
+	});
+
+	// Load the Publications
+	view.on('init', function(next) {
+
+		var Publication = keystone.list('Publication');
+
+		Publication.model.find()
+			.exec(function(err, results) {
+				locals.data.publications = results;
+				next(err);
+			});
 
 	});
 
