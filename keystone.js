@@ -13,13 +13,13 @@ keystone.init({
 
 	'name': 'Eric Science',
 	'brand': 'Eric Science',
-	
+
 	'sass': 'public',
 	'static': 'public',
 	'favicon': 'public/favicon.ico',
 	'views': 'templates/views',
 	'view engine': 'jade',
-	
+
 	'auto update': true,
 	'session': true,
 	'auth': true,
@@ -51,7 +51,8 @@ keystone.set('routes', require('./routes'));
 keystone.set('nav', {
 	'posts': ['posts', 'post-categories'],
 	'enquiries': 'enquiries',
-	'users': 'users'
+	'users': 'users',
+	'case studies': ['case-studies', 'tools'],
 });
 
 // Start Keystone to connect to your database and initialise the web server

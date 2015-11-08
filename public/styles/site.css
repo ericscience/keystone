@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Crete+Round);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,900,300,300italic);
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -5021,9 +5023,6 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
-#header {
-  margin-top: 30px; }
-
 #footer {
   margin-top: 30px;
   border-top: 1px solid #eeeeee;
@@ -5034,3 +5033,94 @@ button.close {
   display: block;
   max-width: 100%;
   height: auto; }
+
+#header {
+  background-color: #3cc7ab;
+  padding-top: 10px; }
+
+.navbar-default {
+  background-color: transparent;
+  border-color: transparent; }
+
+.navbar-brand div.name {
+  font-family: 'Crete Round', serif;
+  color: #156d5b;
+  font-size: 36px; }
+.navbar-brand div.title {
+  font-family: 'Lato', sans-serif;
+  color: #0b5445;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  padding-top: 7px; }
+
+.navbar-nav li a {
+  font-family: 'Lato', sans-serif;
+  color: #ffffff !important;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding-top: 22px; }
+
+.splash {
+  background-color: #3cc7ab; }
+  .splash .intro {
+    font-family: 'Crete Round', serif;
+    font-size: 48px;
+    width: 60%;
+    margin: auto;
+    text-align: center;
+    padding: 50px 0 40px 0;
+    line-height: 120%; }
+  .splash .fox img {
+    margin: auto;
+    display: block; }
+
+.section-title {
+  font-family: 'Crete Round', serif;
+  font-size: 48px;
+  margin: auto;
+  text-align: center;
+  padding-top: 100px; }
+  .section-title hr {
+    margin-top: 0;
+    background: #3cc7ab;
+    width: 100px;
+    height: 5px; }
+
+.cases {
+  font-family: 'Lato', sans-serif; }
+  .cases .row {
+    padding-top: 80px;
+    margin: auto; }
+  .cases .title {
+    font-size: 40px;
+    color: #3cc7ab;
+    line-height: 120%; }
+  .cases .info {
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding-top: 5px; }
+    .cases .info span {
+      font-weight: 400;
+      text-transform: none;
+      font-size: 18px; }
+    .cases .info span.tool:after {
+      content: ", "; }
+    .cases .info span.tool:last-child:after {
+      content: ""; }
+  .cases .img {
+    height: 300px;
+    background-size: cover; }
+  .cases .content {
+    margin-top: 10px;
+    font-weight: 300;
+    font-size: 22px; }
+  .cases .btn {
+    background-color: #3cc7ab;
+    font-family: 'Crete Round', serif;
+    color: white;
+    font-size: 20px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 0px; }

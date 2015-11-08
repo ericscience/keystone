@@ -1,23 +1,41 @@
 extends ../layouts/default
 
 block content
-	.container: .jumbotron
-		img(src='/images/logo.svg', width='160')
-		h1 Welcome
-		p This is your new <a href='http://keystonejs.com' target='_blank'>KeystoneJS</a> website.
-		p It includes the latest versions of
-			| <a href='http://getbootstrap.com/' target='_blank'>Bootstrap</a>
-			| and <a href='http://www.jquery.com/' target='_blank'>jQuery</a>.
-		p Visit the <a href='http://keystonejs.com/guide' target='_blank'>Getting Started</a> guide to learn how to customise it.
-		hr
-		if user && user.canAccessKeystone
-			p
-				a(href='/keystone').btn.btn-lg.btn-primary Open the Admin UI
-		else
-			p We have created a default Admin user for you with the email <strong>eric.garcia@gmail.com</strong> and the password <strong>hilaroi</strong>.
-			p
-				a(href='/keystone/signin', style='margin-right: 10px').btn.btn-lg.btn-primary Sign in
-				|  to use the Admin UI.
-		hr
-		p Remember to <a href='https://github.com/keystonejs/keystone' target='_blank'>Star KeystoneJS on GitHub</a> and
-			| <a href='https://twitter.com/keystonejs' target='_blank'>follow @keystonejs</a> on twitter for updates.
+	.splash
+		.intro I’m a data scientist with 10 years of experience in machine learning.
+		.fox
+			img(src='/images/fox.png')
+	.cases
+		a(name='cases')
+		.section-title Case Studies
+			hr
+
+		
+		each caseStudy in data.caseStudies.results
+			.row.container
+				.col-md-4
+					.img(style="background-image: url(#{caseStudy.image.url})")
+				.col-md-8
+					.case-details
+						.title #{caseStudy.title}
+						.info Project goal: 
+							span #{caseStudy.goal}
+						.info Tools used: 
+							each tool in caseStudy.tools
+								span.tool #{tool.name}
+						.info Length of project: 
+							span #{caseStudy.length}
+						.content !{caseStudy.description}
+
+block js
+	script(src="/js/readmore-js/readmore.min.js")
+	script.
+		$(document).ready(function() {
+			console.log('hello');
+			$('.case-details').readmore({
+				collapsedHeight: 300,
+				moreLink: '<div><div class="btn">Learn More</div></div>',
+				lessLink: '<div><div class="btn">Learn Less</div></div>',
+				embedCSS: false
+			})
+		});
