@@ -219,19 +219,21 @@
     padding-top: 80px;
   }
 
-  .quote-display {
+  .quote-wrapper {
+    height: 350px;
+    position: relative;
+    @media (min-width: 768px) {
+      height: 400px;
+    }
+  }
+  .quote-box {
     text-align: center;
-    height: 300px;
     max-width: 1140px;
     margin: auto;
-    margin-top: 80px;
-    // @media (min-width: 582px) {
-    //   height: 36.082474226804vw;
-    // }
-    @media (min-width: 768px) {
-      height: 350px;
-    }
-    .quote-box {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    .quote {
       text-align: center;
       display: inline-block;
       font-family: 'Lato', sans-serif;

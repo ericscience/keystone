@@ -69,8 +69,9 @@ block content
 		.section-title Testimonials
 			hr
 
-		.quote-display
+		.quote-wrapper
 			.quote-box
+				.quote
 
 		.testimonial-items
 			ul
@@ -98,7 +99,7 @@ block js
 			$('.toggle-experience').toggleMore('.experience-item', 2, 'See More', 'See Less');
 			$('.toggle-publication').toggleMore('.publication-item', 1, 'See More', 'See Less');
 
-			$('.testimonial-items').testimonial('.quote-box', 3, 3000);
+			$('.testimonial-items').testimonial('.quote', 3, 3000);
 
 
 		});
