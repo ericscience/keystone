@@ -16,12 +16,12 @@ block content
 				.col-md-8
 					.case-details
 						.title #{caseStudy.title}
-						.info Project goal: 
+						.info Project goal:
 							span #{caseStudy.goal}
-						.info Tools used: 
+						.info Tools used:
 							each tool in caseStudy.tools
 								span.tool #{tool.name}
-						.info Length of project: 
+						.info Length of project:
 							span #{caseStudy.length}
 						.content !{caseStudy.description}
 	.resume
@@ -36,9 +36,9 @@ block content
 						.institution #{education.institution}
 						.title #{education.degree}
 						.dates #{education.dates}
-						each field in ['focus', 'thesis', 'advisor', 'gpa']
+						each field in ['focus', 'thesis', 'advisor']
 							if education[field]
-								.info #{field}: 
+								.info #{field}:
 									span #{education[field]}
 				.btn.toggle-education See More
 
@@ -55,42 +55,37 @@ block content
 			.col-md-6
 				.header Publications
 				each publication, index in data.publications
-					a(href="/files/#{publication.file.filename}", target="_blank")
-						.publication-item
-							.institution #{publication.venue}
+					.publication-item
+						.institution #{publication.venue}
+						a(href="/files/#{publication.file.filename}", target="_blank")
 							.title #{publication.title}
-							.dates #{publication._.date.format('MMMM YYYY')}
-							.info
-								span #{publication.description}
+						.dates #{publication._.date.format('MMMM YYYY')}
+						.info
+							span #{publication.description}
 				.btn.toggle-publication See More
+
+	.testimonials
+		a(name='testimonials')
+		.section-title Testimonials
+			hr
+
+		.quote-display
+			.quote-box
+
+		.testimonial-items
+			ul
+				each testimonial in data.testimonials
+					li
+						img(src="images/people/#{testimonial.photo.filename}")
+						.name #{testimonial.name}
+						.company #{testimonial.company}
+						.hidden !{testimonial.quote}
 
 block js
 	script(src="/js/readmore-js/readmore.min.js")
+	script(src="/js/toggle-more.js")
+	script(src="/js/testimonial.js")
 	script.
-		jQuery.fn.extend({
-			toggleItems: function (elementClass, numberInitialBlocks, moreString, lessString) {
-				var self = this;
-				function toggle(text, style) {
-					$(self).text(text);
-					$(elementClass).each(function (index) {
-						if (index >= numberInitialBlocks) {
-							$(this).attr('style',style);
-						}
-					});
-				};
-
-				toggle(moreString, 'display: none');
-
-				self.click( function () {
-					if ($(self).text() === moreString) {
-						toggle(lessString, '');
-					}	else {
-						toggle(moreString, 'display: none');
-					}
-				});
-			}
-		});
-
 		$(document).ready(function() {
 			$('.case-details').readmore({
 				collapsedHeight: 305,
@@ -99,9 +94,11 @@ block js
 				embedCSS: false
 			});
 
-			$('.toggle-education').toggleItems('.education-item', 2, 'See More', 'See Less');
-			$('.toggle-experience').toggleItems('.experience-item', 2, 'See More', 'See Less');
-			$('.toggle-publication').toggleItems('.publication-item', 1, 'See More', 'See Less');
+			$('.toggle-education').toggleMore('.education-item', 2, 'See More', 'See Less');
+			$('.toggle-experience').toggleMore('.experience-item', 2, 'See More', 'See Less');
+			$('.toggle-publication').toggleMore('.publication-item', 1, 'See More', 'See Less');
+
+			$('.testimonial-items').testimonial('.quote-box', 3, 3000);
 
 
 		});

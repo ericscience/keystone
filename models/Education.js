@@ -17,5 +17,5 @@ Education.add({
   gpa: { type: String }
 });
 
-Education.defaultColumns = 'degree, institution|20%';
+Education.defaultColumns = 'degree, institution';
 Education.register();

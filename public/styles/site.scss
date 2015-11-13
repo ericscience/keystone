@@ -1,3 +1,8 @@
+// 480
+// 768
+// 992
+// 1300
+
 // Bootstrap
 // =========
 
@@ -170,7 +175,10 @@
   a {
     color: #333333;
     &:hover {
-      color: #333333;
+      color: #000;
+      text-decoration: none;
+    }
+    &:visited, &:focus {
       text-decoration: none;
     }
   }
@@ -200,4 +208,115 @@
     margin-top: 20px;
     border-radius: 0px;
   }
+}
+
+
+/** Stage container **/
+
+.testimonials {
+  .row {
+    margin: auto;
+    padding-top: 80px;
+  }
+
+  .quote-display {
+    text-align: center;
+    height: 300px;
+    max-width: 1140px;
+    margin: auto;
+    margin-top: 80px;
+    // @media (min-width: 582px) {
+    //   height: 36.082474226804vw;
+    // }
+    @media (min-width: 768px) {
+      height: 350px;
+    }
+    .quote-box {
+      text-align: center;
+      display: inline-block;
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 24px;
+      font-style: italic;
+      width: 70%;
+      @media (min-width: 582px) {
+        font-family: 'Lato', sans-serif;
+        font-size: 4.123711340206vw;
+      }
+      @media (min-width: 970px) {
+        font-family: 'Lato', sans-serif;
+        font-size: 40px;
+      }
+    }
+    &:before {
+      content: "";
+      background-image: url("/images/quote.svg");
+      background-repeat: no-repeat;
+      width: 10%;
+      max-width: 65px;
+      height: 100px;
+      margin-top: -23px;
+      background-size: contain;
+      display: inline-block;
+      vertical-align: top;
+    }
+    &:after {
+      content: "";
+      background-image: url("/images/quote.svg");
+      transform: rotate(180deg);
+      background-repeat: no-repeat;
+      width: 10%;
+      max-width: 65px;
+      height: 100px;
+      margin-bottom: -23px;
+      background-size: contain;
+      display: inline-block;
+      vertical-align: bottom;
+    }
+  }
+
+  .testimonial-items {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    width: 100%;
+    max-width: 1140px;
+    overflow: hidden;
+    margin: auto;
+    ul {
+      width: 20000em;
+      position: relative;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      float: left;
+      width: 33.333vw;
+      @media (min-width: 1140px) {
+        width: 380px;
+      }
+      cursor: pointer;
+      text-align: center;
+      img {
+        display: block;
+        border: 5px solid #fff;
+        border-radius: 100%;
+        width: 100px;
+        margin: auto;
+      }
+      .name {
+        font-weight: 700;
+        text-transform: uppercase;
+        padding-top: 20px;
+      }
+      .company {
+        font-weight: 400;
+        padding-top: 5px;
+      }
+    }
+    li.active img {
+      border-color: #3cc7ab;
+    }
+  }
+
 }

@@ -22,5 +22,5 @@ CaseStudy.schema.virtual('content.full').get(function() {
 	return this.content.extended || this.content.brief;
 });
 
-CaseStudy.defaultColumns = 'title, state|20%';
+CaseStudy.defaultColumns = 'title, state|20%, publishedDate|20%';
 CaseStudy.register();

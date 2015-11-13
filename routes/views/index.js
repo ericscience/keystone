@@ -69,6 +69,19 @@ exports = module.exports = function(req, res) {
 
 	});
 
+	// Load the Testimonials
+	view.on('init', function(next) {
+
+		var Testimonial = keystone.list('Testimonial');
+
+		Testimonial.model.find()
+			.exec(function(err, results) {
+				locals.data.testimonials = results;
+				next(err);
+			});
+
+	});
+
 	// Render the view
 	view.render('index');
 

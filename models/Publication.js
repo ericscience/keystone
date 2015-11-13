@@ -23,5 +23,5 @@ Publication.add({
   }
 });
 
-Publication.defaultColumns = 'venue, title|20%, date|20%';
+Publication.defaultColumns = 'title, venue|30%, date|20%';
 Publication.register();
