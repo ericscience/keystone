@@ -16,12 +16,12 @@ block content
 				.col-md-8
 					.case-details
 						.title #{caseStudy.title}
-						.info Project goal:
+						.info Project goal: 
 							span #{caseStudy.goal}
-						.info Tools used:
+						.info Tools used: 
 							each tool in caseStudy.tools
 								span.tool #{tool.name}
-						.info Length of project:
+						.info Length of project: 
 							span #{caseStudy.length}
 						.content !{caseStudy.description}
 	.resume
@@ -100,6 +100,5 @@ block js
 			$('.toggle-publication').toggleMore('.publication-item', 1, 'See More', 'See Less');
 
 			$('.testimonial-items').testimonial('.quote', 3, 3000);
-
 
 		});

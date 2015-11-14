@@ -11,23 +11,38 @@
         tid = setTimeout(loopTestimonials, loopInterval); // repeat myself
       }
 
+      var transition = false;
+
       function selectItem(selectedItem) {
+        if (transition) {
+          return;
+        }
+
         var items = $self.find('li');
         var index = items.index(selectedItem);
-        var parent = $(selectedItem).parent();
 
         if (index === 0) {
-          var $item = items.last();
+          transition = true;
+          var $item  = items.last();
+          var $clone = $item.clone();
+          $item.prependTo($item.parent());
+          $clone.appendTo($item.parent());
           $item.css('margin-left', -$item.width());
-          $item.prependTo(parent);
-          $item.animate({'margin-left': 0}, 500);
+          $item.animate({'margin-left': 0}, 500, 'swing', function() {
+            $clone.remove();
+            transition = false;
+          });
         }
 
         if (index === size-1) {
-          var $item = items.first();
-          $item.animate({'margin-left': -$item.width()}, 500, 'swing', function () {
-            $item.css('margin-left',0);
-            $item.appendTo(parent);
+          transition = true;
+          var $item  = items.first();
+          var $clone = $item.clone();
+          $item.appendTo($item.parent());
+          $clone.prependTo($item.parent());
+          $clone.animate({'margin-left': -$clone.width()}, 500, 'swing', function() {
+            $clone.remove();
+            transition = false;
           });
         }
 
@@ -36,15 +51,14 @@
         $(contentDisplaySelector).text($(selectedItem).find('.hidden').text());
       }
 
-      testimonialItems.click(function () {
+      testimonialItems.click(function() {
         clearTimeout(tid);
         selectItem(this);
         tid = setTimeout(loopTestimonials, loopInterval);
-      })
+      });
 
       selectItem(testimonialItems[1]);
     }
   });
-
 
 })(jQuery);
