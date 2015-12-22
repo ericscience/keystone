@@ -33,3 +33,9 @@ node_modules
 public/styles/*.css
 public/files
 public/images/people
+db
+updates
+import.sh
+export.sh
+default.pem
+
