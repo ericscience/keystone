@@ -34,7 +34,7 @@ public/styles/*.css
 public/files
 public/images/people
 db
-updates
+updates/*.js
 import.sh
 export.sh
 default.pem
